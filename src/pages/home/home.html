@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Buscador de Libros! IONIC!
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label floating>Nombre del libro</ion-label>
+        <ion-input type="text" name="nombre" [(ngModel)]="nombre"  (keyup.enter)="obtener(nombre)"></ion-input>
+    </ion-item>
+    <div class="row" text-center>
+        <div class ="col">
+            <button class="button" ion-button roundoutline (click)="obtener(nombre)">Buscar</button>
+        </div>
+    </div>
+
+  <ion-list>
+    <ion-item *ngFor="let book of libros">
+      <ion-thumbnail item-start  >
+        <img [src]=" IMGS + book.cover_i +'-S.jpg' ">
+      </ion-thumbnail>
+      <h2>{{ book.title_suggest }}</h2>
+      <p>{{ book.author_name }}</p>
+      <button ion-button clear item-end (click)="cambiarPagina(book)">Ver</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
